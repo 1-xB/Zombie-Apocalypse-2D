@@ -13,6 +13,9 @@ public partial class main_character : CharacterBody2D
     public override void _Ready()
     {
         sprite2D = GetNodeOrNull<AnimatedSprite2D>("AnimatedSprite2D"); 
+        PackedScene Luger = GD.Load<PackedScene>("res://game_objects/Luger.tscn");
+        Luger Luger_instance = Luger.Instantiate<Luger>();
+        AddChild(Luger_instance);
     }
 
     public override void _Process(double delta)
@@ -35,6 +38,14 @@ public partial class main_character : CharacterBody2D
         if (Input.IsActionPressed("up"))
         {
             inputDirection.Y -= 1; // Ruch w górę
+        }
+
+        if (Input.IsActionPressed("left_click"))
+        {
+            PackedScene bullet = GD.Load<PackedScene>("res://game_objects/ammo.tscn");
+            ammo bullet_instance = bullet.Instantiate<ammo>();
+            AddChild(bullet_instance);
+
         }
 
         // Normalizujemy kierunek ruchu
@@ -66,6 +77,7 @@ public partial class main_character : CharacterBody2D
                 sprite2D.FlipH = false; // Ustawienie na podstawie kierunku Y
             }
         }
+        
         else
         {
             sprite2D.Animation = "idle";

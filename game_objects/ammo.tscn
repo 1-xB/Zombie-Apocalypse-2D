@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cu38665q8pt1r"]
+
+[ext_resource type="Texture2D" uid="uid://v8st4hlgr6bs" path="res://game_objects/PistolAmmoBig.png" id="1_j7gc6"]
+[ext_resource type="Script" path="res://game_objects/ammo.cs" id="1_lbyhh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tkd7o"]
+size = Vector2(12, 4)
+
+[node name="Ammo" type="Area2D"]
+script = ExtResource("1_lbyhh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-1, -1)
+scale = Vector2(0.875, 0.8125)
+texture = ExtResource("1_j7gc6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -1)
+shape = SubResource("RectangleShape2D_tkd7o")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(2, -1)
+scale = Vector2(0.15, 0.2)
+
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]
