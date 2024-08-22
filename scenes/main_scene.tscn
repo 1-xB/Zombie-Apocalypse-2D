@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dskmblhar06m8"]
+[gd_scene load_steps=11 format=3 uid="uid://dskmblhar06m8"]
 
 [ext_resource type="PackedScene" uid="uid://djk7ghid85lcb" path="res://characters/main_character/main_character.tscn" id="1_dn8x7"]
 [ext_resource type="Texture2D" uid="uid://bjsmlntn8jaeu" path="res://tileset/GRASS+.png" id="2_aahi6"]
+[ext_resource type="PackedScene" uid="uid://csc5ode3n3hdf" path="res://game_objects/Luger.tscn" id="3_1wdsn"]
+[ext_resource type="Script" path="res://scenes/GameManager.cs" id="3_5g10d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_glk6b"]
 texture = ExtResource("2_aahi6")
@@ -1083,6 +1085,10 @@ layer_0/tile_data = PackedInt32Array(2752545, 131072, 12, 3145779, 131072, 12, 2
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_dn8x7")]
 position = Vector2(598, 531)
 
+[node name="Luger" parent="CharacterBody2D" instance=ExtResource("3_1wdsn")]
+position = Vector2(8, -4.00003)
+scale = Vector2(1.8125, 1.3125)
+
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 position = Vector2(-16, -3)
 scale = Vector2(3.8143, 1.03013)
@@ -1094,3 +1100,6 @@ position_smoothing_enabled = true
 position_smoothing_speed = 7.0
 rotation_smoothing_enabled = true
 rotation_smoothing_speed = 7.0
+
+[node name="GameManager" type="Node2D" parent="."]
+script = ExtResource("3_5g10d")

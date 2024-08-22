@@ -6,10 +6,16 @@ public partial class ammo : Area2D
     [Export]
     public float Speed = 500f; 
 
-    private Vector2 _velocity; 
+    private Vector2 _velocity;
+    private CharacterBody2D _characterBody2D;
 
     public override void _Ready()
     {
+        _characterBody2D = GetTree().Root.GetNode<CharacterBody2D>("Node/CharacterBody2D");
+        
+        GlobalPosition = _characterBody2D.GlobalPosition;
+        
+        
         // Pobieramy aktualną pozycję myszy w momencie wystrzału
         Vector2 targetPosition = GetGlobalMousePosition();
         LookAt(targetPosition);
