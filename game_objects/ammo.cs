@@ -37,4 +37,14 @@ public partial class ammo : Area2D
     {
         QueueFree(); // Usuwamy pocisk, gdy wyjdzie poza ekran
     }
+
+    public void _on_area_2d_body_entered(Node2D body)
+    {
+        if (body is zombie ZombieBody)
+        {
+            ZombieBody.DecreaseHealth();
+            QueueFree();
+        }
+
+    }
 }

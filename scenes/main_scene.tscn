@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://dskmblhar06m8"]
+[gd_scene load_steps=12 format=3 uid="uid://dskmblhar06m8"]
 
 [ext_resource type="PackedScene" uid="uid://djk7ghid85lcb" path="res://characters/main_character/main_character.tscn" id="1_dn8x7"]
 [ext_resource type="Texture2D" uid="uid://bjsmlntn8jaeu" path="res://tileset/GRASS+.png" id="2_aahi6"]
 [ext_resource type="PackedScene" uid="uid://csc5ode3n3hdf" path="res://game_objects/Luger.tscn" id="3_1wdsn"]
 [ext_resource type="Script" path="res://scenes/GameManager.cs" id="3_5g10d"]
+[ext_resource type="PackedScene" uid="uid://cwyu3nyc58b2a" path="res://game_objects/zombies_appear_place.tscn" id="5_7nm34"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_glk6b"]
 texture = ExtResource("2_aahi6")
@@ -1101,5 +1102,29 @@ position_smoothing_speed = 7.0
 rotation_smoothing_enabled = true
 rotation_smoothing_speed = 7.0
 
-[node name="GameManager" type="Node2D" parent="."]
+[node name="ZombiesAppearPlaces" type="Node" parent="."]
+
+[node name="ZombiesAppearPlace" parent="ZombiesAppearPlaces" instance=ExtResource("5_7nm34")]
+position = Vector2(28, 27)
+
+[node name="ZombiesAppearPlace2" parent="ZombiesAppearPlaces" instance=ExtResource("5_7nm34")]
+position = Vector2(25, 529)
+
+[node name="ZombiesAppearPlace3" parent="ZombiesAppearPlaces" instance=ExtResource("5_7nm34")]
+position = Vector2(27, 1094)
+
+[node name="ZombiesAppearPlace4" parent="ZombiesAppearPlaces" instance=ExtResource("5_7nm34")]
+position = Vector2(1137, 1093)
+
+[node name="ZombiesAppearPlace5" parent="ZombiesAppearPlaces" instance=ExtResource("5_7nm34")]
+position = Vector2(2218, 1097)
+
+[node name="ZombiesAppearPlace6" parent="ZombiesAppearPlaces" instance=ExtResource("5_7nm34")]
+position = Vector2(2212, 528)
+
+[node name="ZombiesAppearPlace7" parent="ZombiesAppearPlaces" instance=ExtResource("5_7nm34")]
+position = Vector2(2214, 16)
+
+[node name="GameManager" type="Node2D" parent="." node_paths=PackedStringArray("ZombiesAppearPlaces")]
 script = ExtResource("3_5g10d")
+ZombiesAppearPlaces = [NodePath("../ZombiesAppearPlaces/ZombiesAppearPlace"), NodePath("../ZombiesAppearPlaces/ZombiesAppearPlace2"), NodePath("../ZombiesAppearPlaces/ZombiesAppearPlace3"), NodePath("../ZombiesAppearPlaces/ZombiesAppearPlace4"), NodePath("../ZombiesAppearPlaces/ZombiesAppearPlace5"), NodePath("../ZombiesAppearPlaces/ZombiesAppearPlace6"), NodePath("../ZombiesAppearPlaces/ZombiesAppearPlace7")]

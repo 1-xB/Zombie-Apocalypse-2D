@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://cwyu3nyc58b2a"]
+
+[node name="ZombiesAppearPlace" type="Area2D"]
+position = Vector2(14, 11)
