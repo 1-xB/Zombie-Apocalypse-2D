@@ -6,7 +6,8 @@ public partial class main_character : CharacterBody2D
     public float Speed = 200.0f; // Maksymalna prędkość postaci
     public float Acceleration = 1000.0f; // Przyspieszenie postaci
     public float Friction = 1000.0f; // Tarcie postaci
-
+    
+    
     private Vector2 _velocity = Vector2.Zero; // Wektor prędkości postaci
     private AnimatedSprite2D sprite2D;
     
@@ -88,4 +89,6 @@ public partial class main_character : CharacterBody2D
         Velocity = _velocity;
         MoveAndSlide();
     }
+
+    
 }

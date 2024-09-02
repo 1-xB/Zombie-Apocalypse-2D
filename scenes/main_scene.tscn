@@ -1084,6 +1084,7 @@ format = 2
 layer_0/tile_data = PackedInt32Array(2752545, 131072, 12, 3145779, 131072, 12, 2162745, 131072, 12, 2228241, 131072, 12, 2949129, 131072, 12, 3407886, 131072, 12, 4259872, 131072, 12, 4259899, 131072, 12, 1572917, 131072, 12, 786450, 131072, 12, 1441803, 131072, 12, 524346, 131072, 12, 131084, 131072, 12, 1441826, 196608, 12, 720943, 196608, 12, 1507395, 196608, 12, 327707, 196608, 12, 589831, 196608, 12, 3342360, 196608, 12, 3670081, 196608, 12, 4259848, 196608, 12, 1966157, 131072, 12, 1048669, 131072, 12, 2687098, 131072, 12, 589931, 131072, 12, 2818137, 131072, 12, 3014743, 851968, 13, 2752572, 851968, 13, 1245281, 851968, 13, 1638521, 851968, 13, 2949232, 851968, 13, 3670147, 851968, 13, 852104, 851968, 13, 327769, 851968, 13, 2031712, 196608, 12, 917631, 196608, 12, 3604588, 196608, 12, 2097279, 196608, 12, 1966191, 196608, 12, 131194, 196608, 12, 131193, 196608, 12)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_dn8x7")]
+texture_filter = 1
 position = Vector2(598, 531)
 
 [node name="Luger" parent="CharacterBody2D" instance=ExtResource("3_1wdsn")]
@@ -1128,3 +1129,9 @@ position = Vector2(2214, 16)
 [node name="GameManager" type="Node2D" parent="." node_paths=PackedStringArray("ZombiesAppearPlaces")]
 script = ExtResource("3_5g10d")
 ZombiesAppearPlaces = [NodePath("../ZombiesAppearPlaces/ZombiesAppearPlace"), NodePath("../ZombiesAppearPlaces/ZombiesAppearPlace2"), NodePath("../ZombiesAppearPlaces/ZombiesAppearPlace3"), NodePath("../ZombiesAppearPlaces/ZombiesAppearPlace4"), NodePath("../ZombiesAppearPlaces/ZombiesAppearPlace5"), NodePath("../ZombiesAppearPlaces/ZombiesAppearPlace6"), NodePath("../ZombiesAppearPlaces/ZombiesAppearPlace7")]
+
+[node name="ZombieSpawnTimer" type="Timer" parent="GameManager"]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="GameManager/ZombieSpawnTimer" to="GameManager" method="SpawnZombie"]

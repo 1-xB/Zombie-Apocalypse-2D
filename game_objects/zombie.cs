@@ -10,6 +10,7 @@ public partial class zombie : CharacterBody2D
 	private AnimatedSprite2D _zombieAnimation;
 	public float Health = 100;
 	public bool canMove = true;
+	public GameManager gameManager;
 	
 	
 	public Timer _timer;
@@ -20,8 +21,15 @@ public partial class zombie : CharacterBody2D
 		
 		_character = GetTree().Root.GetNode<CharacterBody2D>("Node/CharacterBody2D");
 		_zombieAnimation = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		gameManager = GetTree().Root.GetNode<GameManager>("Node/GameManager");
+		
 		Random random = new Random();
-		speed = random.Next(50, 100);
+		speed = random.Next(50, 100 * (1 + (gameManager.GetRound() / 10)));
+		
+		if (speed > 200)
+		{
+			speed = 150;
+		}
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -69,6 +77,7 @@ public partial class zombie : CharacterBody2D
 		if (Health <= 0)
         {
             QueueFree();
+            gameManager.AddKill();
         }
 	}
 

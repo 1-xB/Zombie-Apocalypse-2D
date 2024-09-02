@@ -101,7 +101,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"attack",
-"speed": 5.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -171,7 +171,7 @@ scale = Vector2(2.96875, 2.65625)
 sprite_frames = SubResource("SpriteFrames_ne0rb")
 animation = &"attack"
 autoplay = "walking"
-frame_progress = 0.848115
+frame_progress = 0.0913542
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3.5, 5.5)
