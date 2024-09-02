@@ -3,7 +3,7 @@ using System;
 
 public partial class GameManager : Node2D
 {
-	public bool _canShot = true;
+	public bool CanShot = true;
 	private Timer _shotTimer;
 	
 	
@@ -18,9 +18,9 @@ public partial class GameManager : Node2D
 	private Random _random;
 
 
-	public int numberOfKills = 0;
-	public int numberOfZombies = 0;
-	public int ZombiesSpawn = 0;
+	public int NumberOfKills;
+	public int NumberOfZombies;
+	public int ZombiesSpawn;
 
 	public Timer ZombieSpawnTimer;
 	
@@ -45,22 +45,22 @@ public partial class GameManager : Node2D
 	{
         
         // Check if the left mouse button is pressed and shoot the bullet if it's allowed'
-		if (Input.IsActionPressed("left_click") && _canShot)
+		if (Input.IsActionPressed("left_click") && CanShot)
 		{
-			_canShot = false;
+			CanShot = false;
 			PackedScene bullet = GD.Load<PackedScene>("res://game_objects/ammo.tscn");
-			ammo bullet_instance = bullet.Instantiate<ammo>();
-			AddChild(bullet_instance);
+			ammo bulletinstance = bullet.Instantiate<ammo>();
+			AddChild(bulletinstance);
 			_shotTimer.Start();
 		}
 		
 		if (RoundInProgress)
 		{
 			
-			numberOfZombies = 10 * RoundNumber;
+			NumberOfZombies = 10 * RoundNumber;
 			
 
-			if (ZombiesSpawn < numberOfZombies)
+			if (ZombiesSpawn < NumberOfZombies)
 			{
 				if (CanSpawn)
 				{
@@ -70,7 +70,7 @@ public partial class GameManager : Node2D
 				
 				
 			}
-			else if (ZombiesSpawn == numberOfZombies)
+			else if (ZombiesSpawn == NumberOfZombies)
 			{
 				
 				RoundInProgress = false;
@@ -81,21 +81,21 @@ public partial class GameManager : Node2D
 
 	public void EndsTimer()
 	{
-		_canShot = true;
+		CanShot = true;
 	}
 	
 	public void AddKill()
 	{
-		numberOfKills++;
-		if (numberOfKills >= numberOfZombies)
+		NumberOfKills++;
+		if (NumberOfKills >= NumberOfZombies)
 		{
 			RoundNumber++;
 			RoundInProgress = true;
-			numberOfKills = 0;
+			NumberOfKills = 0;
 			ZombiesSpawn = 0;
 		}
 		
-		GD.Print(numberOfKills + " " + numberOfZombies);
+		GD.Print(NumberOfKills + " " + NumberOfZombies);
 	}
 
 	public int GetRound()
@@ -107,23 +107,21 @@ public partial class GameManager : Node2D
 	{
 		
 
-		Random random = new Random();
-
 
 		
 		PackedScene enemy = GD.Load<PackedScene>("res://game_objects/zombie.tscn");
-		zombie enemy_instance = enemy.Instantiate<zombie>();
-		AddChild(enemy_instance);
+		zombie enemyinstance = enemy.Instantiate<zombie>();
+		AddChild(enemyinstance);
 
 		// Spawn the enemy at a random position from ZombiesAppearPlaces
 		Vector2 spawnPosition;
 
 		do
 		{
-			spawnPosition = ZombiesAppearPlaces[random.Next(0, ZombiesAppearPlaces.Length)].GlobalPosition;
+			spawnPosition = ZombiesAppearPlaces[_random.Next(0, ZombiesAppearPlaces.Length)].GlobalPosition;
 		} while (spawnPosition.DistanceTo(_character.GlobalPosition) < 10);
 
-		enemy_instance.GlobalPosition = spawnPosition;
+		enemyinstance.GlobalPosition = spawnPosition;
 		ZombiesSpawn++;
 		CanSpawn = true;
 
