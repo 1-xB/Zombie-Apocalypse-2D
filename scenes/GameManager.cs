@@ -9,7 +9,7 @@ public partial class GameManager : Node2D
 	
 	public bool RoundInProgress = true;
 	public bool CanSpawn = true;
-	public int RoundNumber = 100;
+	public int RoundNumber = 1;
 	CharacterBody2D _character;
 
 

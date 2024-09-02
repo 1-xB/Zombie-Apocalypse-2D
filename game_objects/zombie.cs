@@ -5,43 +5,43 @@ public partial class zombie : CharacterBody2D
 {
 
 
-	public float speed;
+	public float Speed;
 	private CharacterBody2D _character;
 	private AnimatedSprite2D _zombieAnimation;
 	public float Health = 100;
-	public bool canMove = true;
-	public GameManager gameManager;
+	public bool CanMove = true;
+	public GameManager MaingameManager;
 	
 	
-	public Timer _timer;
+	public Timer ShotTimer;
 	public override void _Ready()
 	{
 
-		_timer = GetNode<Timer>("Timer");
+		ShotTimer = GetNode<Timer>("Timer");
 		
 		_character = GetTree().Root.GetNode<CharacterBody2D>("Node/CharacterBody2D");
 		_zombieAnimation = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		gameManager = GetTree().Root.GetNode<GameManager>("Node/GameManager");
+		MaingameManager = GetTree().Root.GetNode<GameManager>("Node/GameManager");
 		
 		Random random = new Random();
-		speed = random.Next(50, 100 * (1 + (gameManager.GetRound() / 10)));
+		Speed = random.Next(50, 100 * (1 + (MaingameManager.GetRound() / 10)));
 		
-		if (speed > 200)
+		if (Speed > 200)
 		{
-			speed = 150;
+			Speed = 150;
 		}
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
 
-		if (canMove)
+		if (CanMove)
 		{
 			if (_character == null)
 				return;
 		
 			Vector2 direction = (_character.GlobalPosition - GlobalPosition).Normalized();
-			Velocity = direction * speed;
+			Velocity = direction * Speed;
 			MoveAndSlide();
 
 		}
@@ -56,7 +56,7 @@ public partial class zombie : CharacterBody2D
 
 		if (body.Name == _character.Name)
 		{
-			canMove = false;
+			CanMove = false;
 			_zombieAnimation.Animation = "attack";
 		}
 		
@@ -66,7 +66,7 @@ public partial class zombie : CharacterBody2D
 	{
 		if (body.Name == _character.Name)
 		{
-			_timer.Start();
+			ShotTimer.Start();
 		}
 			
 	}
@@ -77,14 +77,14 @@ public partial class zombie : CharacterBody2D
 		if (Health <= 0)
         {
             QueueFree();
-            gameManager.AddKill();
+            MaingameManager.AddKill();
         }
 	}
 
 	public void _on_timer_timeout()
 	{
 		_zombieAnimation.Animation = "walking";
-		canMove = true;
+		CanMove = true;
 	}
 	
 }
