@@ -159,7 +159,7 @@ animations = [{
 size = Vector2(29, 47)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xyl5b"]
-size = Vector2(42, 54)
+size = Vector2(39, 54)
 
 [node name="Zombie" type="CharacterBody2D"]
 script = ExtResource("1_y4trr")
@@ -181,7 +181,7 @@ shape = SubResource("RectangleShape2D_oara0")
 position = Vector2(2, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(4, 3)
+position = Vector2(2.5, 3)
 shape = SubResource("RectangleShape2D_xyl5b")
 
 [node name="Timer" type="Timer" parent="."]

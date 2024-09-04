@@ -6,14 +6,19 @@ public partial class main_character : CharacterBody2D
     public float Speed = 200.0f; // Maksymalna prędkość postaci
     public float Acceleration = 1000.0f; // Przyspieszenie postaci
     public float Friction = 1000.0f; // Tarcie postaci
+    public float Health = 100f;
+    public float MaxHealth = 100f;
     
     
     private Vector2 _velocity = Vector2.Zero; // Wektor prędkości postaci
     private AnimatedSprite2D sprite2D;
+
+    private Label HealthLabel;
     
 
     public override void _Ready()
     {
+        HealthLabel = GetTree().Root.GetNode<Label>("Node/UI/HealthLabel");
         sprite2D = GetNodeOrNull<AnimatedSprite2D>("AnimatedSprite2D"); 
         
     }
@@ -90,5 +95,26 @@ public partial class main_character : CharacterBody2D
         MoveAndSlide();
     }
 
-    
+    public void TakeDamage(float damage)
+    {
+        Health -= damage;
+        HealthLabel.Text = $"Health: {Health}/{MaxHealth}";
+        if (Health <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        GetTree().ChangeSceneToFile("res://scenes/GameOver.tscn");
+        QueueFree();
+    }
+
+    public void Heal()
+    {
+        Health = 100;
+    }
+
+
 }

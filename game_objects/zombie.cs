@@ -11,6 +11,7 @@ public partial class zombie : CharacterBody2D
 	public float Health = 100;
 	public bool CanMove = true;
 	public GameManager MaingameManager;
+	public main_character CharacterScript;
 	
 	
 	public Timer ShotTimer;
@@ -20,6 +21,7 @@ public partial class zombie : CharacterBody2D
 		ShotTimer = GetNode<Timer>("Timer");
 		
 		_character = GetTree().Root.GetNode<CharacterBody2D>("Node/CharacterBody2D");
+		CharacterScript = _character.GetNode<main_character>(".");
 		_zombieAnimation = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		MaingameManager = GetTree().Root.GetNode<GameManager>("Node/GameManager");
 		
@@ -42,6 +44,14 @@ public partial class zombie : CharacterBody2D
 		
 			Vector2 direction = (_character.GlobalPosition - GlobalPosition).Normalized();
 			Velocity = direction * Speed;
+			if (Velocity.X > 0)
+			{
+				_zombieAnimation.FlipH = false;
+			}
+			else if (Velocity.X < 0)
+			{
+				_zombieAnimation.FlipH = true;
+			}
 			MoveAndSlide();
 
 		}
@@ -58,6 +68,7 @@ public partial class zombie : CharacterBody2D
 		{
 			CanMove = false;
 			_zombieAnimation.Animation = "attack";
+			CharacterScript.TakeDamage(10);
 		}
 		
 	}
