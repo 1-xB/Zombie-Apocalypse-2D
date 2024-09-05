@@ -13,12 +13,16 @@ public partial class zombie : CharacterBody2D
 	public GameManager MaingameManager;
 	public main_character CharacterScript;
 	
+	public bool CanBite = true;
 	
 	public Timer ShotTimer;
+	public Timer BiteTimer;
 	public override void _Ready()
 	{
 
 		ShotTimer = GetNode<Timer>("Timer");
+		BiteTimer = GetNode<Timer>("BiteTimer");
+		
 		
 		_character = GetTree().Root.GetNode<CharacterBody2D>("Node/CharacterBody2D");
 		CharacterScript = _character.GetNode<main_character>(".");
@@ -66,9 +70,13 @@ public partial class zombie : CharacterBody2D
 
 		if (body.Name == _character.Name)
 		{
+			CanBite = true;
 			CanMove = false;
 			_zombieAnimation.Animation = "attack";
 			CharacterScript.TakeDamage(10);
+			BiteTimer.Start();
+			
+			
 		}
 		
 	}
@@ -77,6 +85,8 @@ public partial class zombie : CharacterBody2D
 	{
 		if (body.Name == _character.Name)
 		{
+			BiteTimer.Stop();
+			CanBite = false;
 			ShotTimer.Start();
 		}
 			
@@ -96,6 +106,15 @@ public partial class zombie : CharacterBody2D
 	{
 		_zombieAnimation.Animation = "walking";
 		CanMove = true;
+	}
+
+	public void BiteTimer_timeout()
+	{
+		if (CanBite)
+		{
+			CharacterScript.TakeDamage(10);
+			BiteTimer.Start();
+		}
 	}
 	
 }

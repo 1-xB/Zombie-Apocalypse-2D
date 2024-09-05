@@ -57,7 +57,8 @@ public partial class GameManager : Node2D
 		if (RoundInProgress)
 		{
 			
-			NumberOfZombies = 10 * RoundNumber;
+			//NumberOfZombies = 10 * RoundNumber;
+			NumberOfZombies = 1;
 			
 
 			if (ZombiesSpawn < NumberOfZombies)
