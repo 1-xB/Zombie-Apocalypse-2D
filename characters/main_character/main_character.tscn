@@ -211,3 +211,13 @@ autoplay = "idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -12.75)
 shape = SubResource("RectangleShape2D_nqhkm")
+
+[node name="ReloadLabel" type="Label" parent="."]
+visible = false
+texture_filter = 1
+offset_left = -42.0
+offset_top = -61.0
+offset_right = 52.0
+offset_bottom = -38.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Reloading..."
