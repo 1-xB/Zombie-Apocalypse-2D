@@ -68,11 +68,21 @@ public partial class GameManager : Node2D
 			{
 				MagazineCurrent--;
 				CanShot = false;
-				PackedScene bullet = GD.Load<PackedScene>("res://game_objects/ammo.tscn");
+				PackedScene bullet = GD.Load<PackedScene>("res://game_objects/Pistol and Ammo/ammo.tscn");
 				ammo bulletinstance = bullet.Instantiate<ammo>();
 				AddChild(bulletinstance);
 			
 				_shotTimer.Start();
+			}
+
+			if (Input.IsActionPressed("reload") && MagazineCurrent != MagazineCapacity)
+			{
+				ReloadLabel.Show();
+				if (!IsReloadTimerStart)
+				{
+					ReloadTimer.Start();
+					IsReloadTimerStart = true;
+				}
 			}
 
 			
@@ -145,7 +155,7 @@ public partial class GameManager : Node2D
 
 
 		
-		PackedScene enemy = GD.Load<PackedScene>("res://game_objects/zombie.tscn");
+		PackedScene enemy = GD.Load<PackedScene>("res://game_objects/Zombie/zombie.tscn");
 		zombie enemyinstance = enemy.Instantiate<zombie>();
 		AddChild(enemyinstance);
 
@@ -171,5 +181,20 @@ public partial class GameManager : Node2D
 		ReloadLabel.Hide();
 		ReloadTimer.Stop();
 		IsReloadTimerStart = false;
+	}
+
+	public void IncreaseMagazineCapacity()
+	{
+		MagazineCapacity++;
+	}
+
+	public void DecreaseReloadTime()
+	{
+		ReloadTimer.WaitTime -= ReloadTimer.WaitTime * 0.05;
+	}
+
+	public void DecreaseShootingCooldown()
+	{
+		_shotTimer.WaitTime -= _shotTimer.WaitTime * 0.03;
 	}
 }

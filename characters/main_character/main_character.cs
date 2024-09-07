@@ -93,12 +93,13 @@ public partial class main_character : CharacterBody2D
         // Przesuwamy postać
         Velocity = _velocity;
         MoveAndSlide();
+        HealthLabel.Text = $"Health: {Health}/{MaxHealth}";
     }
 
     public void TakeDamage(float damage)
     {
         Health -= damage;
-        HealthLabel.Text = $"Health: {Health}/{MaxHealth}";
+        
         if (Health <= 0)
         {
             Die();
@@ -114,6 +115,13 @@ public partial class main_character : CharacterBody2D
     public void Heal()
     {
         Health = 100;
+    }
+
+    public void IncreaseMovementSpeed()
+    {
+        Speed += (int)(Speed * 0.03);
+        Friction += (int)(Friction * 0.03);
+        Acceleration += (int)(Acceleration * 0.03);
     }
 
 

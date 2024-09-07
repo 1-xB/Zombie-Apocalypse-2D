@@ -1,10 +1,10 @@
 [gd_scene load_steps=27 format=3 uid="uid://mvci438ncwl4"]
 
 [ext_resource type="Texture2D" uid="uid://cdgc44b644pyb" path="res://game_objects/Zombie/001_walking.png" id="1_hf2fj"]
-[ext_resource type="Script" path="res://game_objects/zombie.cs" id="1_y4trr"]
+[ext_resource type="Script" path="res://game_objects/Zombie/zombie.cs" id="1_y4trr"]
 [ext_resource type="Texture2D" uid="uid://dqi5txv4pkxmw" path="res://game_objects/Zombie/001_attack.png" id="2_gximh"]
 [ext_resource type="Texture2D" uid="uid://sqube2ftpfb5" path="res://game_objects/Zombie/001_death.png" id="3_s52hc"]
-[ext_resource type="Texture2D" uid="uid://cad7y8cnu3nyn" path="res://game_objects/Zombie/idle.png" id="4_8erlk"]
+[ext_resource type="Texture2D" uid="uid://cad7y8cnu3nyn" path="res://game_objects/Pistol and Ammo/idle.png" id="4_8erlk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_enbyx"]
 atlas = ExtResource("2_gximh")

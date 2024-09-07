@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://v8st4hlgr6bs"
-path="res://.godot/imported/PistolAmmoBig.png-2ccb02382591738e52467f6781808da2.ctex"
+uid="uid://crfi1mhp57x1q"
+path="res://.godot/imported/heart1.png-a1bd2dea7a66acf9e56cd20e7211ae0f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game_objects/PistolAmmoBig.png"
-dest_files=["res://.godot/imported/PistolAmmoBig.png-2ccb02382591738e52467f6781808da2.ctex"]
+source_file="res://game_objects/Collectable/Heart/heart1.png"
+dest_files=["res://.godot/imported/heart1.png-a1bd2dea7a66acf9e56cd20e7211ae0f.ctex"]
 
 [params]
 

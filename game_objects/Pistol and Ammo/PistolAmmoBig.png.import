@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fvb5ghv6uf2y"
-path="res://.godot/imported/Luger.png-108dea5f865a96adb61b0b20192d261a.ctex"
+uid="uid://v8st4hlgr6bs"
+path="res://.godot/imported/PistolAmmoBig.png-f01b361b8231d83c9382cc7c155e6525.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game_objects/Luger.png"
-dest_files=["res://.godot/imported/Luger.png-108dea5f865a96adb61b0b20192d261a.ctex"]
+source_file="res://game_objects/Pistol and Ammo/PistolAmmoBig.png"
+dest_files=["res://.godot/imported/PistolAmmoBig.png-f01b361b8231d83c9382cc7c155e6525.ctex"]
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cu38665q8pt1r"]
 
-[ext_resource type="Texture2D" uid="uid://v8st4hlgr6bs" path="res://game_objects/PistolAmmoBig.png" id="1_j7gc6"]
-[ext_resource type="Script" path="res://game_objects/ammo.cs" id="1_lbyhh"]
+[ext_resource type="Texture2D" uid="uid://v8st4hlgr6bs" path="res://game_objects/Pistol and Ammo/PistolAmmoBig.png" id="1_j7gc6"]
+[ext_resource type="Script" path="res://game_objects/Pistol and Ammo/ammo.cs" id="1_lbyhh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tkd7o"]
 size = Vector2(12, 4)
