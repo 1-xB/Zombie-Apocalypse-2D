@@ -40,7 +40,7 @@ public partial class zombie : CharacterBody2D
 
 	public override void _PhysicsProcess(double delta)
 	{
-
+		//
 		if (CanMove)
 		{
 			if (_character == null)
