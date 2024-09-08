@@ -63,18 +63,7 @@ public partial class main_character : CharacterBody2D
                 sprite2D.FlipH = inputDirection.X < 0; // Ustawia kierunek w zależności od kierunku X
             }
             // Ruch w górę i w dół
-            else if (inputDirection.Y != 0)
-            {
-                if (inputDirection.Y > 0)
-                {
-                    sprite2D.Animation = "forward";
-                }
-                else
-                {
-                    sprite2D.Animation = "backward";
-                }
-                sprite2D.FlipH = false; // Ustawienie na podstawie kierunku Y
-            }
+
         }
         
         else

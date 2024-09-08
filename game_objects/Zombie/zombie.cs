@@ -17,12 +17,12 @@ public partial class zombie : CharacterBody2D
 	
 	public Timer ShotTimer;
 	public Timer BiteTimer;
+	public Timer FallTimer;
 	public override void _Ready()
 	{
 
 		ShotTimer = GetNode<Timer>("Timer");
 		BiteTimer = GetNode<Timer>("BiteTimer");
-		
 		
 		_character = GetTree().Root.GetNode<CharacterBody2D>("Node/CharacterBody2D");
 		CharacterScript = _character.GetNode<main_character>(".");
@@ -96,9 +96,11 @@ public partial class zombie : CharacterBody2D
 	{
 		Health -= 25;
 		if (Health <= 0)
-        {
+		{
+            _zombieAnimation.Play("death");
             QueueFree();
             MaingameManager.AddKill();
+            
         }
 	}
 
@@ -116,6 +118,7 @@ public partial class zombie : CharacterBody2D
 			BiteTimer.Start();
 		}
 	}
-	
+
+
 }
 

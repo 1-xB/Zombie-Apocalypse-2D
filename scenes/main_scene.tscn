@@ -1799,13 +1799,25 @@ one_shot = true
 wait_time = 30.0
 one_shot = true
 
+[node name="GameManager" type="Node2D" parent="." node_paths=PackedStringArray("ZombiesAppearPlaces")]
+script = ExtResource("3_5g10d")
+ZombiesAppearPlaces = [NodePath("../ZombiesAppearPlaces/ZombiesAppearPlace"), NodePath("../ZombiesAppearPlaces/ZombiesAppearPlace2"), NodePath("../ZombiesAppearPlaces/ZombiesAppearPlace3"), NodePath("../ZombiesAppearPlaces/ZombiesAppearPlace4"), NodePath("../ZombiesAppearPlaces/ZombiesAppearPlace5"), NodePath("../ZombiesAppearPlaces/ZombiesAppearPlace6"), NodePath("../ZombiesAppearPlaces/ZombiesAppearPlace7")]
+
+[node name="ZombieSpawnTimer" type="Timer" parent="GameManager"]
+wait_time = 0.5
+one_shot = true
+
+[node name="ReloadTimer" type="Timer" parent="GameManager"]
+wait_time = 2.0
+one_shot = true
+
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_dn8x7")]
 texture_filter = 1
-position = Vector2(598, 531)
+position = Vector2(594, 530)
 
-[node name="Luger" parent="CharacterBody2D" instance=ExtResource("3_1wdsn")]
-position = Vector2(8, -4.00003)
-scale = Vector2(1.8125, 1.3125)
+[node name="Gun" parent="CharacterBody2D" instance=ExtResource("3_1wdsn")]
+position = Vector2(2.99999, -14)
+scale = Vector2(1.64844, 1.63452)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 position = Vector2(-16, -3)
@@ -1841,18 +1853,6 @@ position = Vector2(2212, 528)
 
 [node name="ZombiesAppearPlace7" parent="ZombiesAppearPlaces" instance=ExtResource("5_7nm34")]
 position = Vector2(2214, 16)
-
-[node name="GameManager" type="Node2D" parent="." node_paths=PackedStringArray("ZombiesAppearPlaces")]
-script = ExtResource("3_5g10d")
-ZombiesAppearPlaces = [NodePath("../ZombiesAppearPlaces/ZombiesAppearPlace"), NodePath("../ZombiesAppearPlaces/ZombiesAppearPlace2"), NodePath("../ZombiesAppearPlaces/ZombiesAppearPlace3"), NodePath("../ZombiesAppearPlaces/ZombiesAppearPlace4"), NodePath("../ZombiesAppearPlaces/ZombiesAppearPlace5"), NodePath("../ZombiesAppearPlaces/ZombiesAppearPlace6"), NodePath("../ZombiesAppearPlaces/ZombiesAppearPlace7")]
-
-[node name="ZombieSpawnTimer" type="Timer" parent="GameManager"]
-wait_time = 0.5
-one_shot = true
-
-[node name="ReloadTimer" type="Timer" parent="GameManager"]
-wait_time = 2.0
-one_shot = true
 
 [node name="UI" type="CanvasLayer" parent="."]
 

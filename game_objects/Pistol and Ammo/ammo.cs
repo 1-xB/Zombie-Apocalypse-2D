@@ -8,12 +8,15 @@ public partial class ammo : Area2D
 
     private Vector2 _velocity;
     private CharacterBody2D _characterBody2D;
+    public Sprite2D SpawnPos;
 
     public override void _Ready()
     {
         _characterBody2D = GetTree().Root.GetNode<CharacterBody2D>("Node/CharacterBody2D");
+        SpawnPos = GetTree().Root.GetNode<Sprite2D>("Node/CharacterBody2D/Gun");
         
-        GlobalPosition = _characterBody2D.GlobalPosition;
+        
+        GlobalPosition = SpawnPos.GlobalPosition;
         
         
         // Pobieramy aktualną pozycję myszy w momencie wystrzału

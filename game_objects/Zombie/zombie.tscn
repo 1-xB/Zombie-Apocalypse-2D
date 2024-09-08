@@ -124,7 +124,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"death",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -169,9 +169,9 @@ texture_filter = 1
 position = Vector2(3, -11)
 scale = Vector2(2.96875, 2.65625)
 sprite_frames = SubResource("SpriteFrames_ne0rb")
-animation = &"attack"
+animation = &"death"
 autoplay = "walking"
-frame_progress = 0.0913542
+frame_progress = 0.100224
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3.5, 5.5)
@@ -192,6 +192,7 @@ one_shot = true
 wait_time = 1.4
 one_shot = true
 
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

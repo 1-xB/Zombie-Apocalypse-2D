@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://csc5ode3n3hdf"]
 
-[ext_resource type="Texture2D" uid="uid://fvb5ghv6uf2y" path="res://game_objects/Pistol and Ammo/Luger.png" id="1_0ihlj"]
+[ext_resource type="Texture2D" uid="uid://beopxuubysjf" path="res://game_objects/Pistol and Ammo/M15.png" id="1_ihytr"]
 [ext_resource type="Script" path="res://game_objects/Pistol and Ammo/Luger.cs" id="2_ikvnu"]
 
-[node name="Sprite2D" type="Sprite2D"]
+[node name="Gun" type="Sprite2D"]
 texture_filter = 1
-position = Vector2(1, 5)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("1_0ihlj")
+position = Vector2(0, 0.500001)
+scale = Vector2(1.5, 1.3125)
+texture = ExtResource("1_ihytr")
 script = ExtResource("2_ikvnu")
