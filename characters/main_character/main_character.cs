@@ -12,14 +12,15 @@ public partial class main_character : CharacterBody2D
     
     private Vector2 _velocity = Vector2.Zero; // Wektor prędkości postaci
     private AnimatedSprite2D sprite2D;
+    public ProgressBar HealthBar;
 
     private Label HealthLabel;
     
 
     public override void _Ready()
     {
-        HealthLabel = GetTree().Root.GetNode<Label>("Node/UI/HealthLabel");
         sprite2D = GetNodeOrNull<AnimatedSprite2D>("AnimatedSprite2D"); 
+        HealthBar = GetTree().Root.GetNode<ProgressBar>("Node/UI/HealthBar");
         
     }
 
@@ -82,7 +83,7 @@ public partial class main_character : CharacterBody2D
         // Przesuwamy postać
         Velocity = _velocity;
         MoveAndSlide();
-        HealthLabel.Text = $"Health: {Health}/{MaxHealth}";
+        HealthBar.Value = (Health / MaxHealth) * 100; 
     }
 
     public void TakeDamage(float damage)

@@ -302,7 +302,7 @@ scale = Vector2(3.31037, 2.73489)
 sprite_frames = SubResource("SpriteFrames_icewa")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.832254
+frame_progress = 0.138961
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -22)

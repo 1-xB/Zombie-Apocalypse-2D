@@ -8,10 +8,12 @@ public partial class zombie : CharacterBody2D
 	public float Speed;
 	private CharacterBody2D _character;
 	private AnimatedSprite2D _zombieAnimation;
+	public float MaxHealth = 100;
 	public float Health = 100;
 	public bool CanMove = true;
 	public GameManager MaingameManager;
 	public main_character CharacterScript;
+	public ProgressBar HealthBar;
 	
 	public bool CanBite = true;
 	
@@ -28,6 +30,7 @@ public partial class zombie : CharacterBody2D
 		CharacterScript = _character.GetNode<main_character>(".");
 		_zombieAnimation = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		MaingameManager = GetTree().Root.GetNode<GameManager>("Node/GameManager");
+		HealthBar = GetNode<ProgressBar>("HealthBar");
 		
 		Random random = new Random();
 		Speed = random.Next(50, 100 * (1 + (MaingameManager.GetRound() / 10)));
@@ -59,9 +62,9 @@ public partial class zombie : CharacterBody2D
 			MoveAndSlide();
 
 		}
-		
-        
 
+
+		
 
 	}
 
@@ -95,6 +98,7 @@ public partial class zombie : CharacterBody2D
 	public void DecreaseHealth()
 	{
 		Health -= 25;
+		HealthBar.Value = (Health / MaxHealth) * 100;
 		if (Health <= 0)
 		{
             _zombieAnimation.Play("death");

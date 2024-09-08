@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dskmblhar06m8"]
+[gd_scene load_steps=18 format=3 uid="uid://dskmblhar06m8"]
 
 [ext_resource type="PackedScene" uid="uid://djk7ghid85lcb" path="res://characters/main_character/main_character.tscn" id="1_dn8x7"]
 [ext_resource type="Texture2D" uid="uid://bjsmlntn8jaeu" path="res://tileset/GRASS+.png" id="2_aahi6"]
@@ -1760,6 +1760,22 @@ texture = ExtResource("2_aahi6")
 [sub_resource type="TileSet" id="TileSet_by2uv"]
 sources/0 = SubResource("TileSetAtlasSource_3q8hn")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hd0mx"]
+bg_color = Color(0.478431, 0.478431, 0.478431, 0.572549)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.151276, 0.151276, 0.151276, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qnh3l"]
+bg_color = Color(0.643137, 0.00784314, 0, 0.654902)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+
 [node name="Node" type="Node"]
 metadata/_edit_horizontal_guides_ = [-1.0]
 
@@ -1856,15 +1872,6 @@ position = Vector2(2214, 16)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="HealthLabel" type="Label" parent="UI"]
-texture_filter = 1
-offset_left = 7.0
-offset_top = 5.0
-offset_right = 181.0
-offset_bottom = 39.0
-theme_override_font_sizes/font_size = 24
-text = "Healh: 100/100"
-
 [node name="AmmoLabel" type="Label" parent="UI"]
 texture_filter = 1
 anchors_preset = 1
@@ -1888,6 +1895,27 @@ offset_bottom = 34.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 24
 text = "Round : 1"
+
+[node name="HealthBar" type="ProgressBar" parent="UI"]
+texture_filter = 6
+offset_left = 5.0
+offset_top = 39.0
+offset_right = 180.0
+offset_bottom = 66.0
+theme_override_styles/background = SubResource("StyleBoxFlat_hd0mx")
+theme_override_styles/fill = SubResource("StyleBoxFlat_qnh3l")
+value = 100.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="UI"]
+texture_filter = 1
+offset_left = 7.0
+offset_top = 13.0
+offset_right = 179.0
+offset_bottom = 43.0
+theme_override_colors/font_color = Color(0.880662, 0.879818, 0.803816, 1)
+theme_override_font_sizes/font_size = 21
+text = "Health"
 
 [node name="UpgradeMenu" type="CanvasLayer" parent="." node_paths=PackedStringArray("GameManagerScript", "MainCharacterScript")]
 visible = false
