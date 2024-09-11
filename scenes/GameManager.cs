@@ -32,6 +32,8 @@ public partial class GameManager : Node2D
 	public Label ReloadLabel;
 	public Label AmmoLabel;
 	public Label RoundLabel;
+
+	public CanvasLayer PauseMenu;
 	
 	public override void _Ready()
 	{
@@ -74,6 +76,8 @@ public partial class GameManager : Node2D
 			
 				_shotTimer.Start();
 			}
+			
+
 
 			if (Input.IsActionPressed("reload") && MagazineCurrent != MagazineCapacity)
 			{

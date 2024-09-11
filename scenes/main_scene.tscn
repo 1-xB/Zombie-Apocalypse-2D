@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dskmblhar06m8"]
+[gd_scene load_steps=19 format=3 uid="uid://dskmblhar06m8"]
 
 [ext_resource type="PackedScene" uid="uid://djk7ghid85lcb" path="res://characters/main_character/main_character.tscn" id="1_dn8x7"]
 [ext_resource type="Texture2D" uid="uid://bjsmlntn8jaeu" path="res://tileset/GRASS+.png" id="2_aahi6"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dts5yj070np2t" path="res://game_objects/Collectable/Heart/Heart.tscn" id="7_42sij"]
 [ext_resource type="PackedScene" uid="uid://bmwyy4lpfdqai" path="res://game_objects/Collectable/Plus/plus.tscn" id="8_7axnh"]
 [ext_resource type="Script" path="res://scenes/UpgradeMenu.cs" id="9_m7ot6"]
+[ext_resource type="Script" path="res://scenes/PauseMenu.cs" id="10_mfn4q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_glk6b"]
 texture = ExtResource("2_aahi6")
@@ -1769,7 +1770,7 @@ border_width_bottom = 1
 border_color = Color(0.151276, 0.151276, 0.151276, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qnh3l"]
-bg_color = Color(0.643137, 0.00784314, 0, 0.654902)
+bg_color = Color(0.643137, 0.00784314, 0, 0.764706)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -2000,6 +2001,66 @@ Shooting cooldown -3%
 
 "
 
+[node name="PauseMenu" type="CanvasLayer" parent="."]
+process_mode = 3
+visible = false
+script = ExtResource("10_mfn4q")
+
+[node name="upgrade" type="Panel" parent="PauseMenu"]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="PauseMenu/upgrade"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -76.0
+offset_top = 69.0
+offset_right = 65.0
+offset_bottom = 132.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 45
+text = "PAUSE"
+
+[node name="Button" type="Button" parent="PauseMenu/upgrade"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -102.0
+offset_top = -30.0
+offset_right = 104.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Resume"
+
+[node name="Button2" type="Button" parent="PauseMenu/upgrade"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -102.0
+offset_top = 29.0
+offset_right = 105.0
+offset_bottom = 79.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Back to menu"
+
 [connection signal="timeout" from="RandomObjectGen/HeartTimer" to="RandomObjectGen" method="_on_heart_timer_timeout"]
 [connection signal="timeout" from="RandomObjectGen/PlusTimer" to="RandomObjectGen" method="_on_plus_timer_timeout"]
 [connection signal="timeout" from="GameManager/ZombieSpawnTimer" to="GameManager" method="SpawnZombie"]
@@ -2008,3 +2069,4 @@ Shooting cooldown -3%
 [connection signal="pressed" from="UpgradeMenu/upgrade/VBoxContainer/+Movement" to="UpgradeMenu" method="_on_movementUpgrade_pressed"]
 [connection signal="pressed" from="UpgradeMenu/upgrade/VBoxContainer/+ReloadSpeed" to="UpgradeMenu" method="_on_reloadspeedUpgrade_pressed"]
 [connection signal="pressed" from="UpgradeMenu/upgrade/VBoxContainer/+Shooting" to="UpgradeMenu" method="_on_shootingUpgrade_pressed"]
+[connection signal="pressed" from="PauseMenu/upgrade/Button" to="PauseMenu" method="_on_button_pressed"]
