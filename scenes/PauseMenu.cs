@@ -28,6 +28,11 @@ public partial class PauseMenu : CanvasLayer
 		GetTree().Paused = Pause;
 		Visible = Pause;
 	}
-	
-	// todo: add start menu
+
+	public void _on_button_2_pressed()
+	{
+		Pause = !Pause;
+		GetTree().Paused = Pause;
+		GetTree().ChangeSceneToFile("res://scenes/start_menu.tscn");
+	}	
 }
